@@ -1,0 +1,28 @@
+.signUp {
+    display: flex;
+    justify-content: center;
+    margin-top: 59px;
+}
+
+.form_signUp {
+    width: 284px;
+    height: 550px;
+    display: flex;
+    text-align: center;
+    padding: 28px 22px;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 6px;
+    border: 1px solid #D9D9D9;
+    background: #FFF;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.10);
+}
+
+.checkbox {
+    color: #595959;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
