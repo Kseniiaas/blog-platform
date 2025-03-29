@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './SignUp.scss';
 
@@ -23,34 +24,37 @@ const SignUp = () => {
         <h2 className='title_sign'>Sign Up</h2>
         <div className='input'>
           <h1 className='input_title'>Username</h1>
-          <input type="text" name="username" className='input_sign'{...register('username', { required: true, minLength: 3, maxLength: 20 })} placeholder="Username" />
+          <input type="text" name="username" className='input_sign' {...register('username', { required: true, minLength: 3, maxLength: 20 })} placeholder="Username" />
           {errors.username && <span className='error'>Username must be 3-20 characters</span>}
         </div>
         <div className='input'>
           <h1 className='input_title'>Email address</h1>
-          <input type="email" name="email" autoComplete='email' className='input_sign'{...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="Email address" />
+          <input type="email" name="email" autoComplete='email' className='input_sign' {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="Email address" />
           {errors.email && <span className='error'>Invalid email</span>}
         </div>
         <div className='input'>
           <h1 className='input_title'>Password</h1>
-          <input type="password" name="password" autoComplete='current-password' className='input_sign'{...register('password', { required: true, minLength: 6, maxLength: 40 })} placeholder="Password" />
+          <input type="password" name="password" autoComplete='new-password' className='input_sign' {...register('password', { required: true, minLength: 6, maxLength: 40 })} placeholder="Password" />
           {errors.password && <span className='error'>Your password needs to be at least 6 characters.</span>}
         </div>
         <div className='input'>
           <h1 className='input_title'>Repeat Password</h1>
-          <input type="password" name="password" autoComplete='current-password' className='input_sign'{...register('repeatPassword', { validate: (value) => value === watch('password') })} placeholder="Repeat Password" />
+          <input type="password" name="repeatPassword" autoComplete='new-password' className='input_sign' {...register('repeatPassword', { validate: (value) => value === watch('password') })} placeholder="Repeat Password" />
           {errors.repeatPassword && <span className='error'>Passwords must match</span>}
         </div>
-            <label>
-              <input type="checkbox" name="checkbox" className="checkbox" {...register('agree', { required: true })} />
-              I agree to the processing of my personal information
-            </label>
-            {errors.agree && <span className='error'>You must agree</span>}
+        <label className='checkbox-label'>
+          <input type="checkbox" name="checkbox" className="checkbox" {...register('agree', { required: true })} />
+          <p className='checkbox'>I agree to the processing of my personal information</p>
+        </label>
+        {errors.agree && <span className='error'>You must agree</span>}
 
-            <button className="submit" type="submit">Create</button>
+        <button className="submit" type="submit">Create</button>
+
+        <p className="redirect-text">
+          Already have an account? <Link to="/sign-in" className="sign-in-link">Sign In</Link>.
+        </p>
       </form>
     </div>
-    
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './SignIn.scss';
 
@@ -33,6 +34,9 @@ const SignIn = () => {
               {errors.password && <span className='error'>Password is required</span>}
             </div>
             <button className="submit" type="submit">Login</button>
+            <p className="redirect-text">
+              Already have an account? <Link to="/sign-up" className="sign-in-link">Sign Up</Link>.
+            </p>
           </form>
     </div>
   );

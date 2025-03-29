@@ -69,6 +69,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px; 
+    text-decoration: none;
 }
 a.edit_btn {
     padding: 0;
@@ -100,4 +101,15 @@ a.edit_btn {
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+}
+
+.article-body p {
+    max-width: 880px;
+    overflow-wrap: break-word;
+    white-space: normal;
+    padding: 19px;
+}
+
+.article-title-section a {
+    text-decoration: none; 
 }

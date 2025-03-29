@@ -14,9 +14,13 @@ const truncateText = (text, maxWords) => {
 };
 
 const ArticlesList = () => {
+  
+  const storedPage = localStorage.getItem('currentPage');
+  const initialPage = storedPage ? parseInt(storedPage, 10) : 1; 
+
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [totalArticles, setTotalArticles] = useState(0);
 
   useEffect(() => {
@@ -39,6 +43,7 @@ const ArticlesList = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    localStorage.setItem('currentPage', page);
   };
 
   const handleLike = async (slug) => {
@@ -60,7 +65,6 @@ const ArticlesList = () => {
       message.error('Failed to like article');
     }
   };
-  
 
   if (loading) return <div className="spin"><Spin indicator={<LoadingOutlined spin />} size="large" /></div>;
 
@@ -99,7 +103,7 @@ const ArticlesList = () => {
               ))}
             </div>
             <p className="description">{article.description}</p>
-          <Link to={`/articles/${article.slug}`}></Link>
+            <Link to={`/articles/${article.slug}`}></Link>
           </div>
         </div>
       ))}
@@ -115,3 +119,4 @@ const ArticlesList = () => {
 };
 
 export default ArticlesList;
+

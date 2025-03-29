@@ -15,10 +15,13 @@ const Header = ({ isLoggedIn, user, setIsLoggedIn, setUser }) => {
     navigate('/');
   };
 
+
+  const defaultImage = "https://static.productionready.io/images/smiley-cyrus.jpg";
+
   return (
     <header className="header">
       <div className="header-left">
-        <Link to="/">Realworld Blog</Link>
+        <Link to="/" className='header-t'>Realworld Blog</Link>
       </div>
       <div className="header-right">
         {isLoggedIn ? (
@@ -26,8 +29,12 @@ const Header = ({ isLoggedIn, user, setIsLoggedIn, setUser }) => {
             <Link to="/new-article" className="create-article-btn">Create Article</Link>
             {user && (
               <Link to="/profile" className="user-info">
-                <span>{user.username}</span>
-                <img src={user.image} alt={user.username} className="avatar" />
+                <span className='username'>{user.username}</span>
+                <img 
+                  src={user.image?.trim() || defaultImage}
+                  alt={user.username} 
+                  className="avatar" 
+                />
               </Link>
             )}
             <button onClick={handleLogout} className="logout-btn">Log Out</button>
